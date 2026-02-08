@@ -37,3 +37,6 @@ Refer to `schema.sql` to create the necessary table in Supabase.
 
 -   **Schedule**: Modify the `schedule.every().day.at("00:00")` line in `main.py` to change the time.
 -   **Extraction Schema**: valid JSON schema is defined in the `scrape_data` function in `main.py`.
+
+<img width="1887" height="994" alt="image" src="https://github.com/user-attachments/assets/455246a8-8416-43b9-b185-4b9ea6fbd78a" />
+
