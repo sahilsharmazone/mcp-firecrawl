@@ -1,0 +1,184 @@
+{
+  "name": "Audi West Island Scraper",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hours": 0
+            }
+          ]
+        }
+      },
+      "name": "Daily Schedule",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.firecrawl.dev/v1/scrape",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "https://www.audiwestisland.com/fr/inventaire/occasion/"
+            },
+            {
+              "name": "formats",
+              "value": "[\"extract\"]"
+            },
+            {
+              "name": "extract",
+              "value": "={{ {\"schema\": {\"type\": \"object\", \"properties\": {\"vehicles\": {\"type\": \"array\", \"items\": {\"type\": \"object\", \"properties\": {\"title\": {\"type\": \"string\"}, \"vin\": {\"type\": \"string\"}, \"price\": {\"type\": \"number\"}, \"mileage\": {\"type\": \"number\"}, \"year\": {\"type\": \"number\"}, \"fuel_type\": {\"type\": \"string\"}, \"transmission\": {\"type\": \"string\"}, \"listing_url\": {\"type\": \"string\"}, \"website_url\": {\"type\": \"string\"}, \"exterior_color\": {\"type\": \"string\"}, \"engine\": {\"type\": \"string\"}, \"trim\": {\"type\": \"string\"}}}}}}} }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Firecrawl Scrape",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        450,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_FIRECRAWL_CREDENTIAL_ID",
+          "name": "Firecrawl API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const timestamp = new Date().toISOString();\nconst items = $input.all();\nconst vehicles = items[0].json.data.extract.vehicles || [];\n\nreturn vehicles.map(vehicle => {\n  return {\n    json: {\n      ...vehicle,\n      scraped_at: timestamp\n    }\n  };\n});"
+      },
+      "name": "Format Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://xkhtaliebyuzbcdacloq.supabase.co/rest/v1/vehicles",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "json",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "vin",
+              "value": "={{ $json.vin }}"
+            },
+            {
+              "name": "price",
+              "value": "={{ $json.price }}"
+            },
+            {
+              "name": "mileage",
+              "value": "={{ $json.mileage }}"
+            },
+            {
+              "name": "year",
+              "value": "={{ $json.year }}"
+            },
+            {
+              "name": "listing_url",
+              "value": "={{ $json.listing_url }}"
+            },
+            {
+              "name": "website_url",
+              "value": "={{ $json.website_url }}"
+            },
+            {
+              "name": "exterior_color",
+              "value": "={{ $json.exterior_color }}"
+            },
+            {
+              "name": "engine",
+              "value": "={{ $json.engine }}"
+            },
+            {
+              "name": "trim",
+              "value": "={{ $json.trim }}"
+            },
+            {
+              "name": "scraped_at",
+              "value": "={{ $json.scraped_at }}"
+            }
+          ]
+        },
+        "options": {
+          "batch": true
+        }
+      },
+      "name": "Supabase Insert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        850,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "YOUR_SUPABASE_CREDENTIAL_ID",
+          "name": "Supabase Service Role"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Daily Schedule": {
+      "main": [
+        [
+          {
+            "node": "Firecrawl Scrape",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Firecrawl Scrape": {
+      "main": [
+        [
+          {
+            "node": "Format Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Data": {
+      "main": [
+        [
+          {
+            "node": "Supabase Insert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

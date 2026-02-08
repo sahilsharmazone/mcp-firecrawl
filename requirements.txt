@@ -1,0 +1,12 @@
+requests
+schedule
+requests
+schedule
+python-dotenv
+supabase
+scikit-learn
+pandas
+fastapi
+uvicorn
+joblib
+pydantic
