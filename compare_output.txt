@@ -1,0 +1,149 @@
+﻿python : 
+INFO:__main__:=== 
+Checking offset 0 ===
+At line:1 char:1
++ python 
+compare_pages.py 
+2>&1 | Out-File 
+-FilePath 
+compare_output.txt  
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (INFO:__   
+ main__:=== Check    
+ing offset 0 ===    
+:String) [], Rem    
+oteException
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+INFO:__main__:Found 
+12 unique vehicle 
+links at offset 0
+INFO:__main__:  
+Vehicle 1: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1BXAF7
+9MD029262
+INFO:__main__:  
+Vehicle 2: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1AUCF3
+3N1010559
+INFO:__main__:  
+Vehicle 3: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1ANAFY
+1J2021366
+INFO:__main__:  
+Vehicle 4: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1EAAFY
+5P2046244
+INFO:__main__:  
+Vehicle 5: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1EAAFY
+1S2008728
+INFO:__main__:  ... 
+and 7 more
+INFO:__main__:=== 
+Checking offset 12 
+===
+INFO:__main__:Found 
+12 unique vehicle 
+links at offset 12
+INFO:__main__:  
+Vehicle 1: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1BXAF7
+9MD029262
+INFO:__main__:  
+Vehicle 2: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1AUCF3
+3N1010559
+INFO:__main__:  
+Vehicle 3: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1ANAFY
+1J2021366
+INFO:__main__:  
+Vehicle 4: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1EAAFY
+5P2046244
+INFO:__main__:  
+Vehicle 5: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1EAAFY
+1S2008728
+INFO:__main__:  ... 
+and 7 more
+INFO:__main__:=== 
+Checking offset 24 
+===
+INFO:__main__:Found 
+12 unique vehicle 
+links at offset 24
+INFO:__main__:  
+Vehicle 1: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1BXAF7
+9MD029262
+INFO:__main__:  
+Vehicle 2: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1AUCF3
+3N1010559
+INFO:__main__:  
+Vehicle 3: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1ANAFY
+1J2021366
+INFO:__main__:  
+Vehicle 4: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1EAAFY
+5P2046244
+INFO:__main__:  
+Vehicle 5: https://ww
+w.audiwestisland.com/
+fr/inventaire/vehicul
+e/?isdealer&market=ca
+uc&vehicleId=WA1EAAFY
+1S2008728
+INFO:__main__:  ... 
+and 7 more

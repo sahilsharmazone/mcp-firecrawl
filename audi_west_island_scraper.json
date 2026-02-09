@@ -34,6 +34,10 @@
               "value": "https://www.audiwestisland.com/fr/inventaire/occasion/"
             },
             {
+              "name": "limit",
+              "value": "300"
+            },
+            {
               "name": "formats",
               "value": "[\"extract\"]"
             },

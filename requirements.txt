@@ -1,7 +1,5 @@
 requests
 schedule
-requests
-schedule
 python-dotenv
 supabase
 scikit-learn
@@ -10,3 +8,4 @@ fastapi
 uvicorn
 joblib
 pydantic
+playwright
